@@ -6,6 +6,13 @@ using Random = UnityEngine.Random;
 
 public class ObstacleScript : MonoBehaviour
 {
+    //public float yOffset;
+
+    //public float minAmplitude = 3.0f;
+    //public float maxAmplitude = 6.5f;
+
+    //public float amplitude;
+    //private float direction;
     public float speed;
     public float waveSpeed;
     public float bonusHeight; 
@@ -32,7 +39,16 @@ public class ObstacleScript : MonoBehaviour
         rb.constraints &= ~RigidbodyConstraints.FreezePositionZ;
 
         basePosition = transform.position;
+        //yOffset = 1;
 
+        //// Set the starting position as the highest positive amplitude
+        //amplitude = Random.Range(minAmplitude, maxAmplitude);
+        //yOffset += amplitude;
+
+        //// Randomly pick a direction
+        //direction = Random.value < 0.5f ? -1f : 1f;
+
+        //// Randomly pick a speed
         waveSpeed = Random.Range(waveSpeedMin, waveSpeedMax);
         speed = Random.Range(minSpeed, maxSpeed);
         bonusHeight = Random.Range(bonusHeightMin, bonusHeightMax);
@@ -45,6 +61,20 @@ public class ObstacleScript : MonoBehaviour
         transform.position = basePosition + (Vector3.up * bonusHeight) * Mathf.Sin(cycle);
 
         if (target) basePosition = Vector3.MoveTowards(basePosition, target.position, Time.deltaTime * speed);
+
+        //float y = Mathf.PingPong(Time.time * speed, 1) * amplitude * direction;
+        //transform.position = new Vector3(transform.position.x, yOffset + y, transform.position.z);
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+        //// Check if the wave has reached its peak or trough
+        //if (y >= amplitude || y <= -amplitude)
+        //{
+        //    // Reverse the direction
+        //    direction *= -1;
+
+        //    // Set a new random amplitude
+        //    amplitude = Random.Range(minAmplitude, maxAmplitude);
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)

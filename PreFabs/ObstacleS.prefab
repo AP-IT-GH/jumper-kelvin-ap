@@ -113,8 +113,8 @@ MonoBehaviour:
   waveSpeed: 1
   bonusHeight: 1
   target: {fileID: 1754777811328586877, guid: bfcca12ba0d3b9e4e919afd0c8ac2efb, type: 3}
-  bonusHeightMin: 1
-  bonusHeightMax: 3
+  bonusHeightMin: 1.5
+  bonusHeightMax: 3.5
   waveSpeedMin: 1.5
   waveSpeedMax: 4
   minSpeed: 2.5
